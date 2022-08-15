@@ -47,18 +47,18 @@ public class ClientRestController
     }
 
     @PostMapping
-    public Mono<ResponseEntity<Object>> create(@Valid @RequestBody Client cli)
+    public Mono<ResponseEntity<Object>> create(@Valid @RequestBody Client client)
     {
         log.info("[INI] create Client");
-        if(cli.getClientData()!=null)
+        if(client.getClientData()!=null)
         {
-            cli.setClientDataId(new ObjectId().toString());
-            cli.setDateRegister(LocalDateTime.now());
-            return dao.save(cli)
-                    .doOnNext(client -> {
-                        log.info(client.toString());
+            client.setClientDataId(new ObjectId().toString());
+            client.setDateRegister(LocalDateTime.now());
+            return dao.save(client)
+                    .doOnNext(c -> {
+                        log.info(c.toString());
                     })
-                    .map(client -> ResponseHandler.response("Done", HttpStatus.OK, client))
+                    .map(c -> ResponseHandler.response("Done", HttpStatus.OK, c))
                     .onErrorResume(error -> Mono.just(ResponseHandler.response(error.getMessage(), HttpStatus.BAD_REQUEST, null)))
                     .doFinally(fin -> log.info("[END] create Client"));
         }
