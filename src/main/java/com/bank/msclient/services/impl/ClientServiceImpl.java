@@ -1,6 +1,5 @@
 package com.bank.msclient.services.impl;
 
-import com.bank.msclient.controllers.ClientRestController;
 import com.bank.msclient.handler.ResponseHandler;
 import com.bank.msclient.models.dao.ClientDao;
 import com.bank.msclient.models.documents.Client;
@@ -19,7 +18,7 @@ import java.time.LocalDateTime;
 public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientDao dao;
-    private static final Logger log = LoggerFactory.getLogger(ClientRestController.class);
+    private static final Logger log = LoggerFactory.getLogger(ClientServiceImpl.class);
 
     @Override
     public Mono<ResponseHandler> findAll() {
