@@ -10,4 +10,8 @@ class MsClientApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	public void main() {
+		MsClientApplication.main(new String[] {});
+	}
 }
