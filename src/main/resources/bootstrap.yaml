@@ -7,8 +7,3 @@ spring:
       username: root
       password: l$14V12GOKEf
       uri: http://host.docker.internal:8094
-      retry:
-        max-attempts: 3
-        max-interval: 2000
-        initial-interval: 2000
-        request-read-timeout: 10000
